@@ -1,0 +1,32 @@
+{
+  "name": "b64",
+  "version": "1.0.0",
+  "description": "A CLI node app to convert ASCI string to base64 and back again.",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbrundige/base64-cli.git"
+  },
+  "keywords": [
+    "base64",
+    "ASCII",
+    "text",
+    "encode",
+    "decode"
+  ],
+  "author": "TJB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tbrundige/base64-cli/issues"
+  },
+  "homepage": "https://github.com/tbrundige/base64-cli#readme",
+  "dependencies": {
+    "yargs": "^17.2.1"
+  },
+  "bin": {
+    "b64": "./bin/index.js"
+  }
+}
