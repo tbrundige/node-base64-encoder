@@ -8,7 +8,7 @@
 2. Clone repo: git clone https://github.com/tbrundige/base64-cli.git
 3. Inside ./base64-cli/ run "npm install"
 4. run "npm install -g ." to install the app globally to call from any command prompt.
-5. Ensure C:\Users\YOUR_USER\AppData\Roaming\npm\ is included in to Path Enviroment Variable. 
+5. Ensure C:\Users\YOUR_USER\AppData\Roaming\npm\ is included in Path Environment Variable. 
 
 Usage:
 
