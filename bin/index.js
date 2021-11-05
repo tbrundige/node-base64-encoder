@@ -28,16 +28,12 @@ let stringToDecode = options.d;
 
 //Encode ASCII string to base64
 if (options.e !== undefined) {
-  console.log(
-    "Base64 Encoded: " + Buffer.from(stringToEncode).toString('base64')
-  );
+  console.log("Base64 Encoded: " + Buffer.from(stringToEncode).toString('base64'));
 }
 
 //Decode base64 string to ASCII test
 if (options.d !== undefined) {
-  console.log(
-    "Decoded Text: " + Buffer.from(stringToDecode, "base64").toString()
-  );
+  console.log("Decoded Text: " + Buffer.from(stringToDecode, "base64").toString());
 } 
 
 //todo - Provide feedback if invlaid parameters are used
