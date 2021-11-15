@@ -16,8 +16,8 @@ Usage:
 From command prompt:
 run "b64 --help" for list of arguments.
 
-Usage: -e <stringToEncode>
-Usage: -d <base64ToDecode>
+Usage: -e stringToEncode
+Usage: -d base64ToDecode
 
 Options:
       --help     Show help
