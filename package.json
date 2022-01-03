@@ -23,9 +23,6 @@
     "url": "https://github.com/tbrundige/base64-cli/issues"
   },
   "homepage": "https://github.com/tbrundige/base64-cli#readme",
-  "dependencies": {
-    "yargs": "^17.2.1"
-  },
   "bin": {
     "b64": "./bin/index.js"
   }
