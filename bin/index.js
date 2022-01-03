@@ -48,7 +48,7 @@ function base64Encoder(stringToEncode) {
     let encodedString = Buffer.from(stringToEncode).toString("base64");
     return encodedString;
   } catch (err) {
-    console.log(failedToEncode);
+    console.log(error.failedToEncode);
     console.log(err);
   }
 }
@@ -59,7 +59,7 @@ function base64Decoder(stringToDecode) {
     let decodedString = Buffer.from(stringToDecode, "base64").toString();
     return decodedString;
   } catch (err) {
-    console.log(failedToDecode);
+    console.log(error.failedToDecode);
     console.log(err);
   }
 }
