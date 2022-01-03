@@ -12,9 +12,11 @@ const usageInfo = {
 
 // Create an object to store possible errors.
 const error = {
-  "default": "Error: Please use -h or --help to view usage info.",
-  "tooManyArguments": "Error: Too many arguments. Please use -h or --help for usage info.",
-  "tooFewArguments": "Error: Nothing to encode/decode or flag not specifed.",
+  "default": "Error: Please use -h to view usage info.",
+  "tooManyArguments": "Error: Too many arguments. Please use -h for usage info.",
+  "tooFewArguments": "Error: Nothing to encode/decode or flag not specifed. Please use -h for usage info.",
+  "failedToEncode": "Error: Failed to encode.",
+  "failedToDecode": "Error: Failed to decode.",
 };
 
 // Check if sufficient info is provided e.g a flag and a string to encode or decode.
@@ -46,7 +48,8 @@ function base64Encoder(stringToEncode) {
     let encodedString = Buffer.from(stringToEncode).toString("base64");
     return encodedString;
   } catch (err) {
-    return;
+    console.log(failedToEncode);
+    console.log(err);
   }
 }
 
@@ -56,6 +59,7 @@ function base64Decoder(stringToDecode) {
     let decodedString = Buffer.from(stringToDecode, "base64").toString();
     return decodedString;
   } catch (err) {
-    return;
+    console.log(failedToDecode);
+    console.log(err);
   }
 }
