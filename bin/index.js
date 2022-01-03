@@ -19,7 +19,7 @@ const error = {
 
 // Check if sufficient info is provided e.g a flag and a string to encode or decode.
 // Return error message if too few or too many arugments.
-// Proceed to to encode or decode provided string.
+// Proceed to encode or decode provided string.
 if (appArgs.length > 2) {
   console.log(error.tooManyArguments);
 } else if (appArgs.length < 2 && appArgs[0] !== "-h") {
