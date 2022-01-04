@@ -6,7 +6,7 @@ const readline = require("readline");
 // Get the arguments and store them as JSON object.
 const appArgs = {
   flag: process.argv[2],
-  stringToManipulate: process.argv[3],
+  stringToTransform: process.argv[3],
 };
 
 // Flags in use.
@@ -40,17 +40,17 @@ if (!flag.includes(appArgs.flag)) {
     "Would you like to Encode or Decode? ",
     function (encodeOrDecode) {
       rl.question(
-        "What is the string you would like to manipulate? ",
-        function (stringToManipulate) {
-          if (stringToManipulate === '' ) {
+        "What is the string you would like to transform? ",
+        function (stringToTransform) {
+          if (stringToTransform === '' ) {
             console.log(errorMsg.noStringProvided);
           
           } else if (encodeOrDecode.toLowerCase() === "encode") {
-            let encodedString = base64Encoder(stringToManipulate);
+            let encodedString = base64Encoder(stringToTransform);
             console.log(encodedString);
           
           } else if (encodeOrDecode.toLowerCase() === "decode") {
-            let decodedString = base64Decoder(stringToManipulate);
+            let decodedString = base64Decoder(stringToTransform);
             console.log(decodedString);
           
           } else {
@@ -64,11 +64,11 @@ if (!flag.includes(appArgs.flag)) {
   // Check the flag and perform the corresponding operation. 
 } else {
   if (appArgs.flag === "-e") {
-    let encodedString = base64Encoder(appArgs.stringToManipulate);
+    let encodedString = base64Encoder(appArgs.stringToTransform);
     console.log(encodedString);
   
   } else if (appArgs.flag === "-d") {
-    let decodedString = base64Decoder(appArgs.stringToManipulate);
+    let decodedString = base64Decoder(appArgs.stringToTransform);
     console.log(decodedString);
   
   } else if (appArgs.flag === "-h") {
