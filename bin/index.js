@@ -1,44 +1,83 @@
 #!/usr/bin/env node
 
-// Get the arguments.
-const appArgs = process.argv.slice(2);
+// Import readline, to allow user to run the app without flags and with user prompts. 
+const readline = require("readline");
 
-// Create an object to store helptext for each flag. 
+// Get the arguments and store them as JSON object.
+const appArgs = {
+  flag: process.argv[2],
+  stringToManipulate: process.argv[3],
+};
+
+// Flags in use.
+const flag = ["-e", "-d", "-h"];
+
+// Create an object to store helptext for each flag.
 const usageInfo = {
-  "e": "Use -e <stringToEncode> to base64 encode a ASCII string.",
-  "d": "Use -d <stringToDecode> to decode a base64 encoded string.",
-  "h": "Use -h to display usage info."
+  default: "Use b64 with no arguments for user prompt.",
+  e: "Use -e <stringToEncode> to base64 encode a ASCII string. Use \"<stringToEncode>\" if string contains special characters.",
+  d: "Use -d <stringToDecode> to decode a base64 encoded string. Use \"<stringToDecode>\" if string contains special characters.",
+  h: "Use -h to display usage info.",
 };
 
-// Create an object to store possible errors.
-const error = {
-  "default": "Error: Please use -h to view usage info.",
-  "tooManyArguments": "Error: Too many arguments. Please use -h for usage info.",
-  "tooFewArguments": "Error: Nothing to encode/decode or flag not specifed. Please use -h for usage info.",
-  "failedToEncode": "Error: Failed to encode.",
-  "failedToDecode": "Error: Failed to decode.",
+// Create an object to store possible errorMsgs.
+const errorMsg = {
+  default: "Error: Please use -h to view usage info.",
+  tooManyArguments: "Error: Too many arguments. Please use -h for usage info.",
+  tooFewArguments: "Error: Nothing to encode/decode or flag not specifed. Please use -h for usage info.",
+  failedToEncode: "Error: Failed to encode.",
+  failedToDecode: "Error: Failed to decode.",
+  noStringProvided: "Error: No String Provided.",
 };
 
-// Check if sufficient info is provided e.g a flag and a string to encode or decode.
-// Return error message if too few or too many arugments.
-// Proceed to encode or decode provided string.
-if (appArgs.length > 2) {
-  console.log(error.tooManyArguments);
-} else if (appArgs.length < 2 && appArgs[0] !== "-h") {
-  console.log(error.tooFewArguments);
+// Check if flag is present. If no flag, prompt user.
+if (!flag.includes(appArgs.flag)) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  rl.question(
+    "Would you like to Encode or Decode? ",
+    function (encodeOrDecode) {
+      rl.question(
+        "What is the string you would like to manipulate? ",
+        function (stringToManipulate) {
+          if (stringToManipulate === '' ) {
+            console.log(errorMsg.noStringProvided);
+          
+          } else if (encodeOrDecode.toLowerCase() === "encode") {
+            let encodedString = base64Encoder(stringToManipulate);
+            console.log(encodedString);
+          
+          } else if (encodeOrDecode.toLowerCase() === "decode") {
+            let decodedString = base64Decoder(stringToManipulate);
+            console.log(decodedString);
+          
+          } else {
+            console.log(errorMsg.default);
+          }
+          rl.close();
+        }
+      );
+    }
+  );
+  // Check the flag and perform the corresponding operation. 
 } else {
-  if (appArgs[0] === "-e") {
-    let encodedString = base64Encoder(appArgs[1]);
+  if (appArgs.flag === "-e") {
+    let encodedString = base64Encoder(appArgs.stringToManipulate);
     console.log(encodedString);
-  } else if (appArgs[0] === "-d") {
-    let decodedString = base64Decoder(appArgs[1]);
+  
+  } else if (appArgs.flag === "-d") {
+    let decodedString = base64Decoder(appArgs.stringToManipulate);
     console.log(decodedString);
-  } else if (appArgs[0] === "-h") {
+  
+  } else if (appArgs.flag === "-h") {
     for (const helpText in usageInfo) {
       console.log(usageInfo[helpText]);
     }
+  
   } else {
-    console.log(error.default);
+    console.log(errorMsg.default);
   }
 }
 
@@ -47,19 +86,19 @@ function base64Encoder(stringToEncode) {
   try {
     let encodedString = Buffer.from(stringToEncode).toString("base64");
     return encodedString;
+  
   } catch (err) {
-    console.log(error.failedToEncode);
-    console.log(err);
+    console.log(errorMsg.failedToEncode);
   }
 }
 
-// This function decodes Base64 strings.
+// This function decodes Base64 provided string.
 function base64Decoder(stringToDecode) {
   try {
     let decodedString = Buffer.from(stringToDecode, "base64").toString();
     return decodedString;
+  
   } catch (err) {
-    console.log(error.failedToDecode);
-    console.log(err);
+    console.log(errorMsg.failedToDecode);
   }
 }
