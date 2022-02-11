@@ -37,3 +37,5 @@ Command: b64 -d RG9n
 Output: Dog
 
 Use b64 without flags to use with user prompts.
+
+Test github check for powershell script.
