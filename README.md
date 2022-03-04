@@ -13,8 +13,10 @@
 Usage:
 
 [Windows]
-From command prompt:
-run "b64 -h" for list of arguments.
+```sh
+b64 -h
+```
+
 
 Usage: -e stringToEncode
 Usage: -d base64ToDecode
