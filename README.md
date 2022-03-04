@@ -2,7 +2,7 @@
  A CLI nodejs app to convert ASCII string to base64 and back again.
 
 ## Windows
- ## Installation:
+ ### Installation:
 
 1. Install node.js - https://nodejs.org/en/
 2. Clone repo: git clone https://github.com/tbrundige/base64-cli.git
@@ -10,8 +10,8 @@
 4. run "npm install -g ." to install the app globally to call from any command prompt.
 5. Ensure C:\Users\YOUR_USER\AppData\Roaming\npm\ is included in Path Environment Variable. 
 
-## Usage:
-With flags
+### Usage:
+#### With flags
 ```sh
 b64 -h
 Use b64 with no arguments for user prompt.
@@ -19,7 +19,7 @@ Use -e <stringToEncode> to base64 encode a ASCII string. Use "<stringToEncode>" 
 Use -d <stringToDecode> to decode a base64 encoded string. Use "<stringToDecode>" if string contains special characters.
 Use -h to display usage info.
 ```
-Without flags
+#### Without flags
 ```sh
 b64
 Would you like to Encode or Decode? Encode
