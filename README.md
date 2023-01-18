@@ -1,4 +1,4 @@
-# base64-cli
+# node-base64-encoder
  A CLI nodejs app to convert ASCII string to base64 and back again.
 
 ## Windows
