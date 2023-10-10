@@ -13,8 +13,6 @@
 ### Usage:
 #### With flags
 ```sh
-b64 -h
-Use b64 with no arguments for user prompt.
 Use -e '<stringToEncode>'
 Use -d '<stringToDecode>'
 Use -h to display usage info.
