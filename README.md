@@ -15,8 +15,8 @@
 ```sh
 b64 -h
 Use b64 with no arguments for user prompt.
-Use -e <stringToEncode> to base64 encode a ASCII string. Use "<stringToEncode>" if string contains special characters.
-Use -d <stringToDecode> to decode a base64 encoded string. Use "<stringToDecode>" if string contains special characters.
+Use -e '<stringToEncode>'
+Use -d '<stringToDecode>'
 Use -h to display usage info.
 ```
 #### Without flags
